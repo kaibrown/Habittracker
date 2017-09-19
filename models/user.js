@@ -13,5 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             len: [1]
         }
     });
+    User.associate = function(models){
+        User.hasMany(models.Habit, {
+            onDelete: "cascade"
+        });
+    };
     return User;
 }

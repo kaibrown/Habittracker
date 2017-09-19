@@ -9,15 +9,20 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/overview.html"));
   });
   app.get("/user/:id", function (req, res) {
+    // db.User.findAll({}).then(function(result){
+    //   res.json(result);
+    // });
     db.User.findOne({
-      include: [{
-        model: db.Habit,
-        where: {
-          id: req.params.id
-        }
-      }]
+      where: {
+        id: req.params.id
+      },
+      include: [db.Habit]
     }).then(function(result){
-      res.json(result)
+      console.log(result.Habits[0]);
+      var hbsObject = {
+        habit : result.Habits[0]
+      }
+      res.render("index", {habits : hbsObject})
     });
   });
 }
