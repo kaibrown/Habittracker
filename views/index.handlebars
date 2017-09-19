@@ -1,0 +1,26 @@
+<h1>Habits</h1>
+
+<h2>Habits for this user</h2>
+
+<h3> Habits to make </h3>
+<ul>
+    {{#each habits}} 
+       {{#if this.make}}
+         <li>
+             {{this.name}}
+        </li>
+       {{/if}} 
+    {{/each}}
+</ul>
+
+
+<h3> Habits to break </h3>
+<ul>
+    {{#each habits}} 
+       {{#unless this.make}}
+         <li>
+             {{this.name}}
+        </li>
+       {{/unless}} 
+    {{/each}}
+</ul>

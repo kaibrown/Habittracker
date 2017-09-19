@@ -6,6 +6,10 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
+        },
+        make: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     });
     Habit.associate = (function (models) {
