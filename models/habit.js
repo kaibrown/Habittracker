@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     Habit.associate = (function (models) {
         Habit.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false
+                allowNull: false 
             }
         });
     });
