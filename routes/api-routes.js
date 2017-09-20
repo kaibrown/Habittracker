@@ -4,10 +4,7 @@ var db = require("../models")
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // index route loads view.html
-  app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/overview.html"));
-  });
+
 
   app.get("/habit/:id", function(req, res){
     var query = {};
