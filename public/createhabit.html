@@ -1,23 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <link rel="stylesheet" href="output.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="output.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/javascript/habit.js"></script>  
+  <title>Document</title>
 </head>
+
 <body>
   <div class="container">
     <h1>Make Habit</h1>
-    <form action="/action_page.php">
-    <div class="formhabit">
-    <label for="habit"><h2></h2></label>
-    <textarea class="form-control" rows="3" id="enterHabit"></textarea>
-    </div>
-<br>
+    <form id="habit-form">
+      <div class="formhabit">
+        <label for="habit"><h2></h2></label>
+        <input placeholder="Name of new habit" id="new-habit-name"></input>
+      </div>
+      <br>
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary" align="center">
           <input type="radio" name="radioGroup" id="makebutton" class="radio active" aria-pressed="true" autocomplete="off"> Make Habit
@@ -25,24 +28,23 @@
         <label class="btn btn-primary">
           <input type="radio" name="radioGroup" id="breakbutton" class="radio active" aria-pressed="false" autocomplete="off"> Break Habit
         </label>
-        
-          <input type="submit" id="submit" class="btn btn-primary" value="Submit">
-         
-        
+
+        <button type="submit" id="submit" class="btn btn-primary" value="Submit">Create Habit</button>
       </div>
 
     </form>
   </div>
-<div class="container">
-<div class="boxes">
-    <div class="box">Habit 1</div>
-    <div class="box">Habit 2</div>
-    <div class="box">Habit 3</div>
-    <div class="box">Habit 4</div>
-    <div class="box">Habit 5</div>
-</div>
-</div>
-<p>
-</p>
+  <div class="container">
+    <div class="boxes">
+      <div class="box">Habit 1</div>
+      <div class="box">Habit 2</div>
+      <div class="box">Habit 3</div>
+      <div class="box">Habit 4</div>
+      <div class="box">Habit 5</div>
+    </div>
+  </div>
+  <p>
+  </p>
 </body>
+
 </html>
