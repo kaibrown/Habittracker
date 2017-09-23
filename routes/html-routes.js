@@ -9,7 +9,8 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/overview.html"));
   });
   
-  app.get("/createhabit", function (req, res) {
+  app.get("/createhabit/:id", function (req, res) {
+    // var userId = req.params.id    
     res.sendFile(path.join(__dirname, "../public/createhabit.html"));
   });
 }

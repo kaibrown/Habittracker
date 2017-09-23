@@ -6,10 +6,10 @@ var db = require("../models")
 module.exports = function (app) {
 
     //Retrieve all users
-    app.get("/users/", function (req, res){
+    app.get("/api/users/", function (req, res){
         db.User.findAll({})
         .then(function(result){
-            res.json(result);
+            res.send(result);
         });
     });
 
@@ -98,14 +98,13 @@ module.exports = function (app) {
         }).then(function (result) {
             //console.log(result.Habits[0]);
             //console.log(result.Habits[1]);
-
-
+            
             var array = [];
             for (var i = 0; i < result.Habits.length; i++) {
                 array.push(result.Habits[i]);
             }
             //console.log(array);
-            res.render("index", { habits: array })
+            res.render("index", { habits: array, id: result.id })
         });
     });
 }
