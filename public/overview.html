@@ -12,26 +12,28 @@
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <title>Make It or Break It</title>
 </head>
-<body>
+<body class="bgimg">
         
     <!-- This is the Header for the main web page "Make it or Break it" -->
       
-            <div>
+            <div class="row">
+              <div class="col-md-12">
                <h1 id="main-header"> 
                   <span id="highlight"><b>MAKE</b> it </span> 
                   <span>OR</span> 
                   <span id="break"><span class="strike"> <b>BREAK</b> it</span></span> 
                </h1>
+              </div> 
            </div>
        
 
  <!-- This is the first table  -->
  <div class="row usertable">
-   <div class="col-lg-12">
+   <div class="col-md-12">
       <table class="table table-bordered make-habit-table">
         <thead>
           <tr>
-            <th> CHOOSE A USER</th>
+            <th> LOG IN </th>
           </tr>
         </thead>
         <tbody>
@@ -46,31 +48,10 @@
           </tr>
         </tbody>
       </table>
-     <a href="/createhabit.html"><button type="button" id="makehabit" class="btn btn-primary btn-block">Choose an Existing User</button></a>
+     <!-- <a href="/createhabit.html"><button type="button" id="makehabit" class="btn btn-primary btn-block">Choose an Existing User</button></a> -->
     </div>
+ </div> 
               
-
-<!-- This is the second table -->
-   <!-- <div class="container">
-        <table class="table table-bordered righttable">
-               <thead>
-                 <tr>
-                   <th>Habits to BREAK</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>John</td>
-                 </tr>
-                 <tr>
-                   <td>Mary</td>
-                 </tr>
-                 <tr>
-                   <td>July</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>       -->
                     
                 
 
@@ -80,7 +61,7 @@
             <p class="navbar-text">MAKE it or BREAK it Log-In</p>
                  <form class="form-inline">
                         <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="email">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Pasword" aria-label="password">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="password">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log-In</button>
                  </form>
         </nav>
