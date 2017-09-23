@@ -66,6 +66,13 @@ module.exports = function (app) {
         });
     });
 
+    app.post("/api/completehabit/:id", function(req,res){
+        db.Progress.create(req.body)
+        .then(function(result){
+            res.json(result)
+        })
+    })
+
     //Add todays progress to supplied habit NOT TESTED
     app.post("/api/updatehabit/:id", function ( req, res){
         //First retrieve current consec_days value if exists
