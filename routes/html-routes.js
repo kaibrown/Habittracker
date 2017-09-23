@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get("/createhabit", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/createhabit.html"));
   });
-
+}
   /*
   app.get("/user/:id", function (req, res) {
     // db.User.findAll({}).then(function(result){
