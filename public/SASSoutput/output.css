@@ -1,3 +1,6 @@
+body{
+  font-family: Permanent Marker, cursive;
+}
 textarea {
   width: 300px; }
 
@@ -16,6 +19,45 @@ textarea {
 
 .textarea {
   width: 35%; }
+
+#smallheader{
+  font-size: 4.4em;
+  padding: 6%;
+  width: 95%;
+  margin-left: 6%;
+  margin-top: -1%;
+}  
+
+#highlight {
+  background-color: #36D61C;
+  display: inline-block;
+  height:65%;
+  border-radius: 15px 50px 30px;
+}
+
+.bgimg{
+  background-image: url("http://www.curtislibrary.com/wp-content/uploads/2014/03/Copy-of-graph-paper-background.gif");
+height: 100%;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+position: relative
+}
+
+#break{
+  transform: rotate(25deg);
+  /* float: right; */
+  text-decoration: line-through;
+  color: red;
+}
+
+.tabledisplay{
+  background-color: #fff;
+}
+
+.strike{
+  color:#333;
+}
 
 /* The switch - the box around the slider */
 .switch {
