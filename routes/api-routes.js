@@ -1,5 +1,6 @@
 var path = require("path");
 var db = require("../models")
+var async = require("async")
 
 // Routes
 // =============================================================
@@ -102,17 +103,35 @@ module.exports = function (app) {
                 id: req.params.id
             },
             include: [db.Habit]
-        }).then(function (result) {
-            //console.log(result.Habits[0]);
-            //console.log(result.Habits[1]);
+        })
+        .then(function (result) {
+            // code to identify if the habit has been completed already today
+            async.each(result.Habits, function(habit, done){
+                db.Progress.findOne({
+                    where: {
+                        date: new Date(),
+                        HabitId: habit.id
+                    }
+                })
+                .then(function(result){
+                    // assigns the result to a progress attribute of the habit object
+                    habit.progress = result
+                    done()
+                })
+            }, function(){
+                res.render("index", { habits: result.Habits, id: result.id })
+                
+            })
+
             
             var array = [];
             for (var i = 0; i < result.Habits.length; i++) {
                 array.push(result.Habits[i]);
             }
             //console.log(array);
-            res.render("index", { habits: array, id: result.id })
+            // new comment for supervisor
         });
+
     });
 }
 
