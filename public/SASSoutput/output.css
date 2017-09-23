@@ -35,14 +35,14 @@ textarea {
   border-radius: 15px 50px 30px;
 }
 
-.bgimg{
+/* .bgimg{
   background-image: url("http://www.curtislibrary.com/wp-content/uploads/2014/03/Copy-of-graph-paper-background.gif");
 height: 100%;
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
 position: relative
-}
+} */
 
 #break{
   transform: rotate(25deg);
@@ -51,9 +51,9 @@ position: relative
   color: red;
 }
 
-.tabledisplay{
+/* .tabledisplay{
   background-color: #fff;
-}
+} */
 
 .strike{
   color:#333;
