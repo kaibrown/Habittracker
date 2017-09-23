@@ -8,6 +8,7 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/overview.html"));
   });
+  
   app.get("/createhabit", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/createhabit.html"));
   });
@@ -31,4 +32,3 @@ module.exports = function (app) {
     });
   });
   */
-}

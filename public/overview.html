@@ -4,10 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
-    <title>Overview page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <title>Make It or Break It</title>
 </head>
 <body>
-    <h1>This is the overview page</h1>
+        
+    <!-- This is the Header for the main web page "Make it or Break it" -->
+      
+            <div>
+               <h1 id="main-header"> 
+                  <span id="highlight"><b>MAKE</b> it </span> 
+                  <span>OR</span> 
+                  <span id="break"><span class="strike"> <b>BREAK</b> it</span></span> 
+               </h1>
+           </div>
+       
+
+ <!-- This is the first table  -->
+ <div class="row usertable">
+   <div class="col-lg-12">
+      <table class="table table-bordered make-habit-table">
+        <thead>
+          <tr>
+            <th> CHOOSE A USER</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="">John's Habits</a></td>
+          </tr>
+          <tr>
+              <td><a href="">Mary's Habits</a></td>
+          </tr>
+          <tr>
+              <td><a href="">Jane's Habits</a></td>
+          </tr>
+        </tbody>
+      </table>
+     <a href="../public/createhabit.html"><button type="button" id="makehabit" class="btn btn-primary btn-block">Make a Habit</button></a>
+    </div>
+              
+
+<!-- This is the second table -->
+   <!-- <div class="container">
+        <table class="table table-bordered righttable">
+               <thead>
+                 <tr>
+                   <th>Habits to BREAK</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>John</td>
+                 </tr>
+                 <tr>
+                   <td>Mary</td>
+                 </tr>
+                 <tr>
+                   <td>July</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>       -->
+                    
+                
+
+ <!-- Navigation Bar -->
+        <div class="container">
+        <nav class="navbar navbar-inverse justify-content-between navbar-fixed-bottom">
+            <p class="navbar-text">MAKE it or BREAK it Log-In</p>
+                 <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="email">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Pasword" aria-label="password">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log-In</button>
+                 </form>
+        </nav>
+        </div>
+          
+        
+
 </body>
+<script src="https://code.jquery.com/jquery.js" type="text/javascript"></script>
+<script src="js/overview.js" type="text/javascript"></script>
 </html>
