@@ -6,7 +6,7 @@ var db = require("../models")
 module.exports = function (app) {
 
     //Retrieve all users
-    app.get("/users/", function (req, res){
+    app.get("/api/users/", function (req, res){
         db.User.findAll({})
         .then(function(result){
             res.json(result);
