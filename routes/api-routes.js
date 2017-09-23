@@ -5,7 +5,15 @@ var db = require("../models")
 // =============================================================
 module.exports = function (app) {
 
-    //Retrieve current streak
+    //Retrieve all users
+    app.get("/users/", function (req, res){
+        db.User.findAll({})
+        .then(function(result){
+            res.json(result);
+        });
+    });
+
+    //Retrieve current active streak
     app.get("/habitCurStreak/:id", function (req, res){
         db.Progress.findOne({
             where: {
@@ -23,7 +31,7 @@ module.exports = function (app) {
 
     //Retrieve all progress entries for the supplied HabitId
     app.get("/habit/:id", function (req, res) {
-        console.log(req.params.id);
+        //console.log(req.params.id);
         db.Progress.findAll({
             where: {
                 HabitId: req.params.id
@@ -31,6 +39,13 @@ module.exports = function (app) {
         }).then(function (result) {
             //console.log(result);
             res.json(result);
+        });
+    });
+
+    //Retrieve all uncompleted habits for today
+    app.get("habitTodo/:id", function (req, res){
+        db.Progress.findAll({
+
         });
     });
 
