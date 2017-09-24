@@ -43,9 +43,32 @@ module.exports = function (app) {
         });
     });
 
-    //Retrieve all uncompleted habits for today
+    //Retrieve all uncompleted habits for today NOT TESTED
     app.get("habitTodo/:id", function (req, res){
-        db.Progress.findAll({
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Habit]
+        })
+        .then(function (result) {
+            // code to identify if the habit has been completed already today
+            async.each(result.Habits, function(habit, done){
+                db.Progress.findOne({
+                    where: {
+                        date: new Date(),
+                        HabitId: habit.id
+                    }
+                })
+                .then(function(result){
+                    // assigns the result to a progress attribute of the habit object
+                    habit.progress = result
+                    done()
+                })
+            }, function(){
+                res.render("days", { habits: result.Habits, id: result.id })
+                
+            })
 
         });
     });
@@ -97,7 +120,7 @@ module.exports = function (app) {
     });
 
     //Retrieve all habits for user with supplied id
-       //Retrieve all habits for user with supplied id
+/*       //Retrieve all habits for user with supplied id
        app.get("/user/:id", function (req, res) {
         db.User.findOne({
             where: {
@@ -117,8 +140,8 @@ module.exports = function (app) {
             res.render("index", { habits: array })
         });
     });
-
-/*    //Retrieve today's uncompleted habits for supplied user
+ */
+    //Retrieve all habits for supplied user with progress data
     app.get("/user/:id", function (req, res) {
         db.User.findOne({
             where: {
@@ -131,14 +154,19 @@ module.exports = function (app) {
             async.each(result.Habits, function(habit, done){
                 db.Progress.findOne({
                     where: {
-                        date: new Date(),
+                        date: {$gt: new Date(new Date() - 24 * 60 * 60 * 1000)},
                         HabitId: habit.id
                     }
                 })
                 .then(function(result){
                     // assigns the result to a progress attribute of the habit object
-                    habit.progress = result
-                    done()
+                    habit.progress = result;
+                    if(result){
+                        habit.status = "Yes";
+                    } else {
+                        habit.status = "No";
+                    }
+                    done();
                 })
             }, function(){
                 res.render("index", { habits: result.Habits, id: result.id })
@@ -155,7 +183,7 @@ module.exports = function (app) {
         });
 
     });
-    */
+   
 }
 
 
