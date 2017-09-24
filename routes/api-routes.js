@@ -97,6 +97,28 @@ module.exports = function (app) {
     });
 
     //Retrieve all habits for user with supplied id
+       //Retrieve all habits for user with supplied id
+       app.get("/user/:id", function (req, res) {
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Habit]
+        }).then(function (result) {
+            //console.log(result.Habits[0]);
+            //console.log(result.Habits[1]);
+
+
+            var array = [];
+            for (var i = 0; i < result.Habits.length; i++) {
+                array.push(result.Habits[i]);
+            }
+            //console.log(array);
+            res.render("index", { habits: array })
+        });
+    });
+
+/*    //Retrieve today's uncompleted habits for supplied user
     app.get("/user/:id", function (req, res) {
         db.User.findOne({
             where: {
@@ -133,6 +155,7 @@ module.exports = function (app) {
         });
 
     });
+    */
 }
 
 
