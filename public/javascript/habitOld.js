@@ -14,7 +14,7 @@ $(document).ready(function () {
     function handleHabitFormSubmit(event) {
         event.preventDefault();
         var bMake = this.value;   
-        var iMake;
+        var iMake = 3;
 
                 
         if(bMake === 'good'){
