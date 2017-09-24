@@ -17,7 +17,7 @@
 <div class="row">
   <div class="col-md-6"><h2>Make Habit</h2>
     <textarea class="form-control" rows="5" id="entergoodHabit"></textarea>
-    <input type="submit" id="submit" class="btn btn-primary" value="Submit">     
+    <input type="submit" id="submit" class="btn btn-primary" value="Submit" onclick="validate1()">     
     </form>
   </div>
 
@@ -25,7 +25,7 @@
     <h2>Break Habit</h2>
 
     <textarea class="form-control" rows="5" id="enterbadHabit"></textarea>
-  <input type="submit" id="submit" class="btn btn-primary" value="Submit">     
+  <input type="submit" id="submit" class="btn btn-primary" value="Submit" onclick="validate2()">     
     </form></div>
   </div>
   
@@ -78,3 +78,29 @@
   </body>
 
 </html>
+
+<script>
+
+function validate1() {
+    var x, text;
+    x = document.getElementById("entergoodHabit").value;
+
+        if (x=" ") {
+        text = "Please enter habit before submitting";
+    }
+    document.getElementById("entergoodHabit").innerHTML = text;
+}
+
+function validate2() {
+    var x, text;
+    x = document.getElementById("enterbadHabit").value;
+
+        if (x=" ") {
+        text = "Please enter habit before submitting";
+    }
+    document.getElementById("enterbadHabit").innerHTML = text;
+}
+
+
+
+</script>
