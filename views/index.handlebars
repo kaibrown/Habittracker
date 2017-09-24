@@ -8,7 +8,10 @@
     {{#each habits}} 
        {{#if this.make}}
          <li>
-             {{this.name}}
+             <h3>{{this.name}}</h3>
+                {{#unless this.progress}}
+                    <button id={{this.id}} class="complete-button">Complete Habit</button>
+                {{/unless}}
         </li>
        {{/if}} 
     {{/each}}
@@ -20,10 +23,13 @@
     {{#each habits}} 
        {{#unless this.make}}
          <li>
-             {{this.name}}
+             <h3>{{this.name}}</h3>
+                {{#unless this.progress}}
+                    <button id={{this.id}} class="complete-button">Complete Habit</button>
+                {{/unless}}
         </li>
        {{/unless}} 
     {{/each}}
 </ul>
 
-<a href = "/createhabit/{{id}}.html?user={{id}}"> Create Habit </a>
+<a href = "/createhabit/{{id}}.html?user={{id}}"> Create New Habit </a>
