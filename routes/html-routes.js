@@ -11,7 +11,7 @@ module.exports = function (app) {
   
   app.get("/createhabit/:id", function (req, res) {
     // var userId = req.params.id    
-    res.sendFile(path.join(__dirname, "../public/createhabit.html"));
+    res.sendFile(path.join(__dirname, "../public/createhabitOld.html"));
   });
 }
   /*

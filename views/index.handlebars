@@ -1,29 +1,48 @@
 
-<h1>Habits</h1>
-
-<h2>Habits for this user</h2>
+<h1>Your Habits</h1>
 
 <h3> Habits to make </h3>
-<ul>
-    {{#each habits}} 
-       {{#if this.make}}
-         <li>
-             {{this.name}}
-        </li>
-       {{/if}} 
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Complete Action</th>
+    </tr>
+    {{#each habits}}
+        {{#if this.make}}
+            <tr>
+                <td><a href="#">{{this.name}}</a></td>
+                {{#if this.progress}}
+                    <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}}>Done</label></td>
+                {{/if}}
+                {{#unless this.progress}}
+                      <td><label><input type="checkbox" value="done" id={{this.id}}>Complete?</label></td>
+                {{/unless}}
+            </tr>
+        {{/if}}
     {{/each}}
-</ul>
+</table>
 
 
 <h3> Habits to break </h3>
-<ul>
-    {{#each habits}} 
-       {{#unless this.make}}
-         <li>
-             {{this.name}}
-        </li>
-       {{/unless}} 
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Complete Action</th>
+    </tr>
+    {{#each habits}}
+        {{#unless this.make}}
+            <tr>
+                <td><a href="#">{{this.name}}</td></a></td>
+                {{#if this.progress}}
+                    <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}}>Done</label></td>
+                {{/if}}
+                {{#unless this.progress}}
+                      <td><label><input type="checkbox" value="done" id={{this.id}}>Complete?</label></td>
+                {{/unless}}
+            </tr>
+        {{/unless}}
     {{/each}}
-</ul>
-
-<a href = "/createhabit/{{id}}.html?user={{id}}"> Create Habit </a>
+</table>
+<br>
+<a href = "/createhabit/{{id}}.html?user={{id}}"> Create New Habit </a>

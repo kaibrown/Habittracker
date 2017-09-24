@@ -1,5 +1,6 @@
 var path = require("path");
 var db = require("../models")
+var async = require("async")
 
 // Routes
 // =============================================================
@@ -42,9 +43,32 @@ module.exports = function (app) {
         });
     });
 
-    //Retrieve all uncompleted habits for today
+    //Retrieve all uncompleted habits for today NOT TESTED
     app.get("habitTodo/:id", function (req, res){
-        db.Progress.findAll({
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Habit]
+        })
+        .then(function (result) {
+            // code to identify if the habit has been completed already today
+            async.each(result.Habits, function(habit, done){
+                db.Progress.findOne({
+                    where: {
+                        date: new Date(),
+                        HabitId: habit.id
+                    }
+                })
+                .then(function(result){
+                    // assigns the result to a progress attribute of the habit object
+                    habit.progress = result
+                    done()
+                })
+            }, function(){
+                res.render("days", { habits: result.Habits, id: result.id })
+                
+            })
 
         });
     });
@@ -65,6 +89,13 @@ module.exports = function (app) {
             req.json(result);
         });
     });
+
+    app.post("/api/completehabit/:id", function(req,res){
+        db.Progress.create(req.body)
+        .then(function(result){
+            res.json(result)
+        })
+    })
 
     //Add todays progress to supplied habit NOT TESTED
     app.post("/api/updatehabit/:id", function ( req, res){
@@ -89,7 +120,8 @@ module.exports = function (app) {
     });
 
     //Retrieve all habits for user with supplied id
-    app.get("/user/:id", function (req, res) {
+/*       //Retrieve all habits for user with supplied id
+       app.get("/user/:id", function (req, res) {
         db.User.findOne({
             where: {
                 id: req.params.id
@@ -98,15 +130,60 @@ module.exports = function (app) {
         }).then(function (result) {
             //console.log(result.Habits[0]);
             //console.log(result.Habits[1]);
+
+
+            var array = [];
+            for (var i = 0; i < result.Habits.length; i++) {
+                array.push(result.Habits[i]);
+            }
+            //console.log(array);
+            res.render("index", { habits: array })
+        });
+    });
+ */
+    //Retrieve all habits for supplied user with progress data
+    app.get("/user/:id", function (req, res) {
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Habit]
+        })
+        .then(function (result) {
+            // code to identify if the habit has been completed already today
+            async.each(result.Habits, function(habit, done){
+                db.Progress.findOne({
+                    where: {
+                        date: {$gt: new Date(new Date() - 24 * 60 * 60 * 1000)},
+                        HabitId: habit.id
+                    }
+                })
+                .then(function(result){
+                    // assigns the result to a progress attribute of the habit object
+                    habit.progress = result;
+                    if(result){
+                        habit.status = "Yes";
+                    } else {
+                        habit.status = "No";
+                    }
+                    done();
+                })
+            }, function(){
+                res.render("index", { habits: result.Habits, id: result.id })
+                
+            })
+
             
             var array = [];
             for (var i = 0; i < result.Habits.length; i++) {
                 array.push(result.Habits[i]);
             }
             //console.log(array);
-            res.render("index", { habits: array, id: result.id })
+            // new comment for supervisor
         });
+
     });
+   
 }
 
 
