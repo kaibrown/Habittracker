@@ -9,15 +9,17 @@ $(document).ready(function () {
     // var userId = sessionStorage.getItem("user-id")
 
     $(document).on("click", "#submit", handleHabitFormSubmit)
-    
+
+
 
     function handleHabitFormSubmit(event) {
         event.preventDefault();
-        var bMake = this.value;   
+        var bMake = this.value;
         var iMake = 3;
 
-                
-        if(bMake === 'good'){
+
+        if (bMake === 'good') {
+
             habitInput = $("#entergoodHabit").val();
             console.log("setting good");
             iMake = 1;
@@ -35,13 +37,17 @@ $(document).ready(function () {
         console.log(userId)
         console.log(habitInput);
 
-        upsertHabit(
-            {
-                name: habitInput,
-                make: iMake,
-                UserId: userId
-            },
-        );
+
+        if(habitInput !== "Please enter habit before submitting"){
+            upsertHabit(
+                {
+                    name: habitInput,
+                    make: iMake,
+                    UserId: userId
+                },
+            );
+        }
+
     }
 
     function upsertHabit(habitData) {

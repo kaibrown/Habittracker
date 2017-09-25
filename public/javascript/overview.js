@@ -9,7 +9,7 @@ $(document).ready(function () {
             rowSpan.append(data[i].username + "'s habits")
             rowSpan.attr("href", "/user/" + data[i].id)
             tableRow.append(rowSpan)
-            userTable.append(tableRow)            
+            userTable.append(tableRow)
         }
     })
 });
