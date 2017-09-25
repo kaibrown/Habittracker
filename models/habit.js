@@ -18,6 +18,12 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false 
             }
         });
+        Habit.hasMany(models.Progress, {
+            foreignKey: {
+                allowNull: false
+            },
+            onDelete: "cascade"            
+        })
     });
     return Habit;
 };
