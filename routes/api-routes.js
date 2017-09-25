@@ -1,7 +1,9 @@
 var path = require("path");
 var db = require("../models")
 var async = require("async")
+
 var moment = require("moment");
+
 
 // Routes
 // =============================================================
@@ -45,13 +47,16 @@ module.exports = function (app) {
     });
 
     //Retrieve all uncompleted habits for today NOT TESTED
+
     app.get("habitTodo/:id", function (req, res) {
+
         db.User.findOne({
             where: {
                 id: req.params.id
             },
             include: [db.Habit]
         })
+
             .then(function (result) {
                 // code to identify if the habit has been completed already today
                 async.each(result.Habits, function (habit, done) {
@@ -68,6 +73,7 @@ module.exports = function (app) {
                         })
                 }, function () {
                     res.render("days", { habits: result.Habits, id: result.id })
+
 
                 })
 
@@ -90,11 +96,13 @@ module.exports = function (app) {
         });
     });
 
+
     app.post("/api/completehabit/:id", function (req, res) {
         db.Progress.create(req.body)
             .then(function (result) {
                 res.json(result)
             })
+
     })
 
     //Add todays progress to supplied habit NOT TESTED
@@ -129,6 +137,7 @@ module.exports = function (app) {
     });
 
     //Retrieve all habits for user with supplied id
+
     /*       //Retrieve all habits for user with supplied id
            app.get("/user/:id", function (req, res) {
             db.User.findOne({
@@ -152,11 +161,13 @@ module.exports = function (app) {
      */
     //Retrieve all habits for supplied user with progress data
     app.get("/user/:id", function (req, res) {
+
         db.User.findOne({
             where: {
                 id: req.params.id
             },
             include: [db.Habit]
+
         })
             .then(function (result) {
                 // code to identify if the habit has been completed already today
@@ -194,6 +205,7 @@ module.exports = function (app) {
             });
 
     });
+
 
 }
 

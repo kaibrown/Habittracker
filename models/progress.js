@@ -1,12 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var Progress = sequelize.define("Progress", {
         date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             default: DataTypes.NOW
-        },
-        consec_days: {
-            type: DataTypes.INTEGER,
-            default: 1
         }
     });
     Progress.associate = (function (models) {
