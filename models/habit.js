@@ -15,14 +15,14 @@ module.exports = function (sequelize, DataTypes) {
     Habit.associate = (function (models) {
         Habit.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false 
+                allowNull: false
             }
         });
         Habit.hasMany(models.Progress, {
             foreignKey: {
                 allowNull: false
             },
-            onDelete: "cascade"            
+            onDelete: "cascade"
         })
     });
     return Habit;
