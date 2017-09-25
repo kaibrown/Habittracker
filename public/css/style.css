@@ -48,13 +48,13 @@ body{
     height: 8%;
 }
 .navbar-text{
-    font-size: 1.5em;
+    font-size: 1.75em;
     color: #FFFFFF;
-    margin-left: 93px;
+    margin-left: 96px;
 }
 
 .form-inline{
-   margin: 10px 30%;
+   margin: 10px 10%;
 }
 
 .form-control{
@@ -62,39 +62,43 @@ body{
     margin: 3px 17px 5px 5px;
 }
 
-.table{
+/* .table{
     border-top: solid 3px #333;
     border-bottom: solid 10px #333;
     border-left:solid 12px #36D61C;
     border-right:solid 12px #36D61C;
     
-}
-
-th{
-    background-color: #333;
-    font-size: 2.5em;
-    font-family: Permanent Marker, cursive;
-}
+} */
 
 td{
     font-size: 1.9em;
 }
 
+.user-table-body{
+    font-size: 2.75em;
+}
+
 .table,
-th{
+th,
+tr,
+td{
     text-align: center;
     vertical-align: middle;
-    width: 45%;
+    border: none;
     }
+
+#user-table-top{
+    background-color: #333;
+    font-size: 2.5em;
+}
 
 th{
     color: #36D61C;
 } 
 
-.usertable{
-    width: 114%;
-    margin-left: 22%;
-    border-radius: 20px 20px 20px 20px;
+#usertable{
+    width: 50%;
+    margin-left: 49%;
 }
 
 .righttable{
@@ -107,4 +111,68 @@ th{
     background-color: #36D61C;
     font-size: 1.3em;
     border: none;
+}
+/* Styling For the Index Handlebars Page */
+#habitheadline{
+    font-size: 8.5em;
+    text-align: center;
+    /* color: #36D61C; */
+}
+
+.table-tops{
+    font-size: 4em;
+    margin-left: 15%;
+}
+
+.habit-table-headers{
+    font-size: 2.25em;
+    text-decoration: underline;
+}
+
+.break2{
+    text-decoration: line-through;
+    color: red;
+}
+
+.highlight2{
+    background-color: #36D61C;
+    position: inline-block;
+
+}
+
+.more-info-link{
+    float: right;
+    margin-right: 9%;
+}
+
+.glyphicon{
+    color:#337ab7;
+}
+/* Styling for the createhabitOld page  */
+
+.make-habit-headlines{
+    font-size:3em;
+}
+
+#entergoodHabit,
+#enterbadHabit{
+    width: 85%;
+    font-size: 2em;
+    border: #333 solid 2px;
+}
+
+#submit{
+    width: 85%;
+    background-color: #333;
+}
+
+.go-back-link{
+    font-size: 4em;
+    margin-left: -3%;
+}
+
+.info-table{
+    color: #337ab7;
+    font-size: 1.4em;
+    border-bottom: #333 solid 4px;
 }
