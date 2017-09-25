@@ -35,13 +35,15 @@ $(document).ready(function () {
         console.log(userId)
         console.log(habitInput);
 
-        upsertHabit(
-            {
-                name: habitInput,
-                make: iMake,
-                UserId: userId
-            },
-        );
+        if(habitInput !== "Please enter habit before submitting"){
+            upsertHabit(
+                {
+                    name: habitInput,
+                    make: iMake,
+                    UserId: userId
+                },
+            );
+        }
     }
 
     function upsertHabit(habitData) {
