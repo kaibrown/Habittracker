@@ -182,11 +182,6 @@ th{
 }
 
 
-
-
-
-
-
 @media only screen and (min-width: 1440px) {
     
        #main-header{
@@ -211,11 +206,20 @@ th{
            margin-left: 6%;
        
        }
-       
+     #habitheadline  {
+         font-size: 6.5em;
+     }
+
+     .table-tops{
+         font-size: 3em;
+     }
+     .info-table{
+         font-size: 1.0em;
+     }
    }
 
 
-   @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     
        #main-header{
            font-family: Permanent Marker, cursive;
@@ -226,14 +230,33 @@ th{
            margin-top: 2%;
        
        }
+
        #break{
         transform: rotate(0deg);
         float: right;
        }
+
+       #habitheadline  {
+        font-size: 5.5em;
+        color: #337ab7;
+    }
+
+    .table-tops{
+        font-size: 3em;
+        margin-left: 27%;
+    }
+
+    .info-table{
+        font-size: 0.9em;
+    }
+    
+    .go-back-link {
+        font-size: 3em;
+        }
        
    }
 
-   @media only screen and (max-width: 375px) {
+@media only screen and (max-width: 375px) {
     
        #main-header{
            font-family: Permanent Marker, cursive;
@@ -256,7 +279,17 @@ th{
         
         font-size: 1.75em;
     }
-       
-   }
-       
+
+    .table-tops{
+        font-size: 2.2em;
+        margin-left: 20%;
+    }
+ 
+    .go-back-link {
+    font-size: 3em;
+    }
+    .make-habit-headlines{
+        font-size: 2em;
+    }
+}     
       
