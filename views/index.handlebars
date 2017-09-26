@@ -14,7 +14,7 @@
             </tr>
             {{#each habits}} {{#if this.make}}
             <tr>
-                <td><a href="#">{{this.name}}</a></td>
+                <td><a id = {{this.name}} href="#">{{this.name}}</a></td>
                 {{#if this.progress}}
                 <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
                 {{/if}} {{#unless this.progress}}
@@ -36,7 +36,7 @@
                 </tr>
                 {{#each habits}} {{#unless this.make}}
                 <tr>
-                    <td><a href="#">{{this.name}}</td></a></td>
+                    <td><a id= {{this.name}} href="#">{{this.name}}</td></a></td>
                     {{#if this.progress}}
                     <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} onclick="changeValueCheckbox(this)">Done</label></td>
                     {{/if}} {{#unless this.progress}}
