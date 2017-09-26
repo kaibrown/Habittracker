@@ -14,9 +14,9 @@
             <tr>
                 <td><a id = {{this.name}} href="#">{{this.name}}</a></td>
                 {{#if this.progress}}
-                <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
+                <td><label><input disabled checked="checked" type="checkbox" value="done" id="{{this.id}}">Done</label></td>
                 {{/if}} {{#unless this.progress}}
-                <td><label><input type="checkbox" value="{{this.id}}" id="updateMCheck" >Complete?</label></td>
+                <td><label><input type="checkbox" value="{{this.id}}" class="updateMCheck" >Complete?</label></td>
                 {{/unless}}
             </tr>
             {{/if}} {{/each}}
@@ -38,7 +38,7 @@
                     {{#if this.progress}}
                     <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
                     {{/if}} {{#unless this.progress}}
-                    <td><label><input type="checkbox" value="{{this.id}}" id="updateBCheck">Complete?</label></td>
+                    <td><label><input type="checkbox" value="{{this.id}}" class="updateBCheck">Complete?</label></td>
                     {{/unless}}
                 </tr>
                 {{/unless}} {{/each}}
@@ -52,27 +52,21 @@
 
 <script>
     $(document).ready(function () {
-        $(document).on("click", ".updateMCheck", updateMakeHabit);
-        $(document).on("click", ".updateBCheck", updateBreakHabit);
+        $(document).on("click", ".updateMCheck", updateHabit);
+        $(document).on("click", ".updateBCheck", updateHabit);
 
-        function updateMakeHabit(event) {
+        function updateHabit(event) {
             event.preventDefault();
 
             var habitId = this.value;
             
             console.log("MAKE id="+habitId);
-            $.post("/api/updatehabit/" + habitId);
-            location.reload();
-        }
-
-        function updateBreakHabit(event) {
-            event.preventDefault();
-
-            var habitId = this.value;
-            console.log("break id="+habitId);
-            $.post("/api/updatehabit/" + habitId);
-            location.reload();
-        }        
+            //$.get("/user/"+userId, function (userHabits) {
+            $.post("/api/updatehabit/" + habitId, function(){
+                location.reload();
+            });  
+        };
+      
     });
 
 </script>
