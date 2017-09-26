@@ -50,22 +50,24 @@
             <col colspan="4">
 
           </colgroup>
-
-          <tr class="info-table">
-            <td colspan="3">Your Current Habit Goals</td>
-            <td colspan="3">Current Streak</td>
-            <td colspan="3">Weakest Streak</td>
-            <td colspan="3">Last Updated</td>
-            <td colspan="3">Completed Habits</td>
-          </tr>
+          
+            <tr class="info-table">
+              <td colspan="3">Your Current Habit Goals</td>
+              <td colspan="3">Current Streak</td>
+              <td colspan="3">Weakest Streak</td>
+              <td colspan="3">Last Updated</td>
+              <td colspan="3">Completed Habits</td>
+            </tr>
+          
+          <tbody id="tableData"></tbody>
           <tr>
             <td id="habitsList" colspan="3">
-              habit #1
+              
             </td>
             <td colspan="3" id="currentStreak"><br>
               <br>
             </td>
-            <td colspan="3" id="weakest">
+            <td colspan="3" id="longestStreak">
               <br>
               <br>
 
@@ -76,7 +78,6 @@
             </td>
           </tr>
         </table>
-
         
   <!-- </body>
 
@@ -87,6 +88,9 @@
 
 
 </body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="/javascript/habitOld.js"></script>
 <script>
   function validate1() {
