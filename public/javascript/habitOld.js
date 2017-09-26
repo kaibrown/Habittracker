@@ -8,8 +8,30 @@ $(document).ready(function () {
     console.log(userId)
     // var userId = sessionStorage.getItem("user-id")
 
-    $(document).on("click", "#submit", handleHabitFormSubmit)
+    $(document).on("click", "#submitMake", handleHabitFormSubmit);
+    $(document).on("click", "#submitBreak", handleHabitFormSubmit);
 
+    //Get data to show in chart
+    var streaks = [];
+    var habits;
+    $.get("/user/"+userId, function (userHabits) {
+        for (var i = 0; i < userHabits.length; i++) {
+            $.get("/habitCurStreak/"+userId, function(data){
+                streaks.push(data);
+            });
+            
+        }
+        addData(userHabits, streaks);
+    });
+
+
+    //Add data to table
+    function addData(userHabits, streaks){
+        console.log("First Name:" + userHabits[0].name);
+        for (var i = 0; i < userHabits.length; i++) {
+            $("#habitsList").append(userHabits[i].name);
+        }
+    }   
 
 
     function handleHabitFormSubmit(event) {

@@ -98,6 +98,7 @@ module.exports = function (app) {
 
 
     app.post("/api/completehabit/:id", function (req, res) {
+        console.log("API/COMPLETEHABIT");
         db.Progress.create(req.body)
             .then(function (result) {
                 res.json(result)
@@ -107,6 +108,9 @@ module.exports = function (app) {
 
     //Add todays progress to supplied habit NOT TESTED
     app.post("/api/updatehabit/:id", function (req, res) {
+        console.log("api habitid="+req.params.id);
+
+        
         //First retrieve current consec_days value if exists
         db.Progress.findAll({
             limit: 1,
@@ -116,7 +120,7 @@ module.exports = function (app) {
             order: [['date', 'DESC']]
 
         }).then(function (days) {
-            console.log(days);
+
             var consec = 0;
             if (days === null) {
                 consec = days[0].consec_days + 1;
@@ -128,8 +132,10 @@ module.exports = function (app) {
 
             req.body.consec_days = consec;
             req.body.HabitId = req.params.id;
-            req.body.date = new Date();
+            //req.body.date = new Date();
+            
             db.Progress.create(req.body).then(function (result) {
+
                 res.json(result);
             });
         });
