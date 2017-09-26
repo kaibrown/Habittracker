@@ -1,7 +1,10 @@
 {
   "development": {
+    "port": 8889,
     "username": "root",
-    "password": "rxoxoxtx",
+    "password": "root",
+
+    "port": 8889,
     "database": "habittracker",
     "host": "127.0.0.1",
     "dialect": "mysql",

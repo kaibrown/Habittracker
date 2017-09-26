@@ -33,6 +33,7 @@ $(document).ready(function () {
         }
     }   
 
+
     function handleHabitFormSubmit(event) {
         event.preventDefault();
         var bMake = this.value;
@@ -40,6 +41,7 @@ $(document).ready(function () {
 
 
         if (bMake === 'good') {
+
             habitInput = $("#entergoodHabit").val();
             console.log("setting good");
             iMake = 1;
@@ -57,6 +59,7 @@ $(document).ready(function () {
         console.log(userId)
         console.log(habitInput);
 
+
         if(habitInput !== "Please enter habit before submitting"){
             upsertHabit(
                 {
@@ -66,6 +69,7 @@ $(document).ready(function () {
                 },
             );
         }
+
     }
 
     function upsertHabit(habitData) {

@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         date: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
+
         },
         consec_days: {
             type: DataTypes.INTEGER,
