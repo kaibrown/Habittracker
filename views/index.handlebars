@@ -14,7 +14,7 @@
         {{#if this.progress}}
         <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
         {{/if}} {{#unless this.progress}}
-        <td><label><input type="checkbox" value="{{this.id}}" id="updateCheck" >Complete?</label></td>
+        <td><label><input type="checkbox" value="{{this.id}}" class="updateMCheck" >Complete?</label></td>
         {{/unless}}
     </tr>
     {{/if}} {{/each}}
@@ -31,9 +31,9 @@
     <tr>
         <td><a href="#">{{this.name}}</td></a></td>
         {{#if this.progress}}
-        <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} onclick="changeValueCheckbox(this)">Done</label></td>
+        <td><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
         {{/if}} {{#unless this.progress}}
-        <td><label><input type="checkbox" value="done" id={{this.id}}>Complete?</label></td>
+        <td><label><input type="checkbox" value="{{this.id}}" class="updateBCheck">Complete?</label></td>
         {{/unless}}
     </tr>
     {{/unless}} {{/each}}
@@ -43,15 +43,27 @@
 
 <script>
     $(document).ready(function () {
-        $(document).on("click", "#updateCheck", updateHabit);
+        $(document).on("click", ".updateMCheck", updateMakeHabit);
+        $(document).on("click", ".updateBCheck", updateBreakHabit);
 
-        function updateHabit(event) {
+        function updateMakeHabit(event) {
             event.preventDefault();
 
-            var habitId = $("#updateCheck").val();
+            var habitId = this.value;
+            
+            console.log("MAKE id="+habitId);
             $.post("/api/updatehabit/" + habitId);
             location.reload();
         }
+
+        function updateBreakHabit(event) {
+            event.preventDefault();
+
+            var habitId = this.value;
+            console.log("break id="+habitId);
+            $.post("/api/updatehabit/" + habitId);
+            location.reload();
+        }        
     });
 
 </script>
