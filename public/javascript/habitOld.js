@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     var habitInput = $(".new-habit-name")
 
@@ -14,23 +15,45 @@ $(document).ready(function () {
     //Get data to show in chart
     var streaks = [];
     var habits;
-    $.get("/user/"+userId, function (userHabits) {
-        for (var i = 0; i < userHabits.length; i++) {
-            $.get("/habitCurStreak/"+userId, function(data){
-                streaks.push(data);
-            });
-            
-        }
-        addData(userHabits, streaks);
+    $.get("/habitCurStreak/"+userId, function (userHabits) {
+        //console.log(userHabits);
+        //console.log(userHabits.length);
+        addData(userHabits);
     });
 
 
     //Add data to table
     function addData(userHabits, streaks){
-        console.log("First Name:" + userHabits[0].name);
-        for (var i = 0; i < userHabits.length; i++) {
-            $("#habitsList").append(userHabits[i].name);
+        console.log(userHabits);
+        console.log(userHabits[0].Progresses);
+        console.log(userHabits[0].Progresses[4].consec_days);
+        console.log(userHabits[0].Progresses[4].date);
+        for(var i=0;i<userHabits.length;i++){
+            var name = userHabits[i].name;
+            var curStreak = userHabits[i].Progresses[userHabits[i].Progresses.length-1].consec_days;
+            var date = moment(userHabits[i].Progresses[userHabits[i].Progresses.length-1].date).format('MM-DD-YYYY');
+            var longStreak = 0;
+            for(var j=0;j<userHabits[i].Progresses.length;j++){
+                if(userHabits[i].Progresses[j].consec_days > longStreak){
+                    longStreak = userHabits[i].Progresses[j].consec_days;
+                }
+            }
+            var doneValue=0;
+            if(curStreak >= 21){
+                doneValue = "✔";
+            } else {
+                doneValue = " ";
+            }
+            $("#habitsList").append("<tr><td>"+name+"</td></tr>");
+            $("#currentStreak").append("<tr><td>"+curStreak+"</td></tr>");
+            $("#longestStreak").append("<tr><td>"+longStreak+"</td></tr>");
+            $("#lastUpdated").append("<tr><td>"+date+"</td></tr>");
+            $("#completedHabit").append("<tr><td>"+doneValue+"</td></tr>");
         }
+        //console.log("First Name:" + userHabits[0].name);
+        //for (var i = 0; i < userHabits.length; i++) {
+        //    $("#habitsList").append(userHabits[i].name);
+        //}
     }   
 
 
