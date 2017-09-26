@@ -24,10 +24,9 @@ $(document).ready(function () {
 
     //Add data to table
     function addData(userHabits, streaks){
-        console.log(userHabits);
-        console.log(userHabits[0].Progresses);
-        console.log(userHabits[0].Progresses[4].consec_days);
-        console.log(userHabits[0].Progresses[4].date);
+        //console.log(userHabits);
+        //console.log(userHabits[0].Progresses);
+
         for(var i=0;i<userHabits.length;i++){
             var name = userHabits[i].name;
             var curStreak = userHabits[i].Progresses[userHabits[i].Progresses.length-1].consec_days;
