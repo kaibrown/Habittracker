@@ -5,8 +5,8 @@ $(document).ready(function () {
     var url = window.location.href
     var userIdArray = url.split("=")
     var userId = userIdArray[1]
-    console.log(url)
-    console.log(userId)
+    //console.log(url)
+    //console.log(userId)
     // var userId = sessionStorage.getItem("user-id")
 
     $(document).on("click", "#makeSubmit", handleHabitFormSubmit);
@@ -31,8 +31,9 @@ $(document).ready(function () {
             var name = userHabits[i].name;
             $("#habitsList").append("<tr><td>"+name+"</td></tr>");
             //If new habit with no progress, only add name
-            console.log(userHabits[i].Progresses);
+            //console.log(userHabits[i].Progresses);
             if(userHabits[i].Progresses.length !== 0 ){
+                //else add more details
                 var curStreak = userHabits[i].Progresses[userHabits[i].Progresses.length-1].consec_days;
                 var date = moment(userHabits[i].Progresses[userHabits[i].Progresses.length-1].date).format('MM-DD-YYYY');
                 var longStreak = 0;
@@ -45,8 +46,9 @@ $(document).ready(function () {
                 if(curStreak >= 21){
                     doneValue = "✔";
                 } else {
-                    doneValue = " ";
+                    doneValue = "x";
                 }
+                //console.log("done value= "+ doneValue);
 
                 $("#currentStreak").append("<tr><td>"+curStreak+"</td></tr>");
                 $("#longestStreak").append("<tr><td>"+longStreak+"</td></tr>");
@@ -54,10 +56,6 @@ $(document).ready(function () {
                 $("#completedHabit").append("<tr><td>"+doneValue+"</td></tr>");
             }
         }
-        //console.log("First Name:" + userHabits[0].name);
-        //for (var i = 0; i < userHabits.length; i++) {
-        //    $("#habitsList").append(userHabits[i].name);
-        //}
     }   
 
 
@@ -66,28 +64,29 @@ $(document).ready(function () {
         var bMake = this.value;
         var iMake = 3;
 
-
+        //get whether it is a good or bad habbit
         if (bMake === 'good') {
-
             habitInput = $("#entergoodHabit").val();
-            console.log("setting good");
+            //console.log("setting good");
             iMake = 1;
         } else {
             habitInput = $("#enterbadHabit").val();
-            console.log("setting bad");
+            //console.log("setting bad");
             iMake = 0;
         }
+        //Check again here if empty, if it is don't do anything
         if (!habitInput.trim()) {
-            console.log("empty string");
+            //console.log("empty string");
             return;
         }
 
-        console.log(bMake);
-        console.log(userId)
-        console.log(habitInput);
+        //console.log(bMake);
+        //console.log(userId)
+        //console.log(habitInput);
 
-
+        //double-check we don't have the invalid message before continuing
         if(habitInput !== "Please enter habit before submitting"){
+            //create data object to add
             upsertHabit(
                 {
                     name: habitInput,
@@ -99,6 +98,7 @@ $(document).ready(function () {
 
     }
 
+    //Call post api to create teh new habit
     function upsertHabit(habitData) {
         $.post("/api/createhabit", habitData);
         location.reload();
