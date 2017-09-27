@@ -20,12 +20,17 @@
   "dependencies": {
     "async": "^2.5.0",
     "body-parser": "^1.18.1",
+    "chai": "^4.1.2",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.9",
+    "mocha": "^3.5.3",
+    "moment": "^2.18.1",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.2",
-    "sequelize": "^4.8.4"
+    "nightmare": "^2.10.0",
+    "sequelize": "^4.8.4",
+    "xpath": "0.0.24"
   },
   "devDependencies": {}
 }

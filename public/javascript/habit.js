@@ -9,14 +9,16 @@ $(document).ready(function () {
     // var userId = sessionStorage.getItem("user-id")
 
     $(document).on("click", "#submit", handleHabitFormSubmit)
-    
+
 
     function handleHabitFormSubmit(event) {
         event.preventDefault();
         console.log(event)
         console.log(habitInput)
         console.log(userId)
-        var selValue = $('input[name=radioGroup]:checked').val();                
+
+        var selValue = $('input[name=radioGroup]:checked').val();
+
         if (!habitInput.val().trim()) {
             return;
         }
