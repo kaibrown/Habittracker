@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         $.post("/api/completehabit/:id", progressData, function () {
 
-            location.reload()
+            location.reload();
         })
     }
 

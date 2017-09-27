@@ -68,7 +68,7 @@ module.exports = function (app) {
                     })
                         .then(function (result) {
                             // assigns the result to a progress attribute of the habit object
-                            habit.progress = result
+                            habit.progress = result;
                             done()
                         })
                 }, function () {
@@ -84,7 +84,7 @@ module.exports = function (app) {
     app.post("/api/createhabit", function (req, res) {
         //console.log(req.body)
         db.Habit.create(req.body).then(function (result) {
-            res.json(result)
+            res.json(result);
             //console.log(result)
         })
     });
