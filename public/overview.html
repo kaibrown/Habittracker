@@ -57,7 +57,7 @@
 <!-- Modal -->
 <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content bgimg">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create New Habit Tracker User</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,11 +66,11 @@
       </div>
       <div class="modal-body">
         <form id="myForm"  >
-          <div class="form-group">
+          <div class="form-group mdlbl">
             <label for="usr">Name:</label>
             <input type="text" class="form-control" id="usr" placeholder="user name" title="Input a valid user name" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mdlbl">
             <label for="pwd">Password:</label>
             <input type="password" class="form-control" id="pwd" placeholder="password" title="Input a valid password" required>
           </div>
@@ -78,7 +78,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" onclick="validateInputs()"class="btn btn-primary">Create User</button>
+        <button type="submit" onclick="validateInputs()"class="btn btncrt btn-lg">Create User</button>
       </div>
     </div>
   </div>

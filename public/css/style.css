@@ -39,6 +39,14 @@ body{
     color:#333;
 }
 
+#makehabit{
+
+    font-size: 2em;
+    color:#36D61C;
+    background-color: #333;
+    margin-left: 41%;
+}
+
 
 
 .navbar{
@@ -71,12 +79,12 @@ body{
     
 } */
 
-td{
+/* td{
     font-size: 1.9em;
-}
+} */
 
 .user-table-body{
-    font-size: 2.75em;
+    font-size: 3.5em;
     overflow: auto;
     display: inline-block;
     
@@ -110,6 +118,33 @@ th{
 
 }
 
+
+.modal-title
+{
+    font-size: 2em;
+    text-align: center;
+    line-height: 0;
+}
+
+.mdlbl{
+    font-size: 1.9em;
+    text-align: center;
+}
+
+.modal-header{
+    border-bottom: 2px #36D61C solid;
+}
+
+#pwd,#usr{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.btncrt{
+    background-color: #36D61C;
+}
+
 .btn-block{
     width: 45%;
     background-color: #36D61C;
@@ -133,6 +168,37 @@ th{
     text-decoration: underline;
 }
 
+/* .mkhbttd{
+    font-size:3.0em;
+} */
+
+#habitsList{
+    font-size: 2.2em;
+} 
+
+#currentStreak{
+    font-size: 2.2em;
+}
+#longestStreak{
+    font-size: 2.2em;
+}
+#lastUpdated{
+    font-size: 2.2em;
+}
+
+#completedHabit{
+    font-size: 1.2em;
+}
+
+.tdforh{
+    font-size: 2.9em;
+}
+
+input[type=checkbox] {
+    transform: scale(2.0);
+    margin:17px;
+  }
+
 .break2{
     text-decoration: line-through;
     color: red;
@@ -142,6 +208,10 @@ th{
     background-color: #36D61C;
     position: inline-block;
 
+}
+
+.inputtbl{
+    font-size:1.3em;
 }
 
 .more-info-link{
@@ -292,4 +362,3 @@ th{
         font-size: 2em;
     }
 }     
-      
