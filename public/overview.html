@@ -93,18 +93,29 @@
   function validateInputs() {
     $("#submit-button").click();  //force html5 validation;
   var f = document.getElementsByTagName('form')[0];
-  var user;
+  var user, pwd;
   var bTaken = false;
     user = $("#usr").val();  
     user.trim();
     user = user.toLowerCase();
+    pwd = $("#pwd").val();
+    pwd.trim();
     console.log(user);
+    console.log(pwd);
   if(f.checkValidity()) {
     //Still check length here as well, doesn't always catch this issue
     console.log("valid: length="+user.length);
-    if(user.length == 0){
-      $("#usr").attr('placeholder', "Invalid user name");
-      bTaken = true;
+    if(user.length === 0 || pwd.length === 0){
+      if(user.length === 0){
+        $("#usr").val("");
+        $("#usr").attr('placeholder', "Invalid user name");
+      }
+      if(pwd.length === 0)
+      {
+        $("#pwd").val("");
+        $("#pwd").attr('placeholder', "Invalid password"); 
+      }
+      return;
     } else {
         //Check if user already exists before trying to add
       //get all table entries
