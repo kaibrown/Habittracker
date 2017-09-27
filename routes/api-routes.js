@@ -92,7 +92,7 @@ module.exports = function (app) {
     //Create new user   NOT TESTED
     app.post("/api/createuser", function (req, res) {
         db.User.create(req.body).then(function (result) {
-            req.json(result);
+            res.json(result);
         });
     });
 
