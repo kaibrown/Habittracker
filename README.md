@@ -1,9 +1,12 @@
 # Make It or Break It
 
-<h2>This is a habit tracker application to help improve your good habits and help you get rid of the bad ones.</h2>
+<h2>This is a habit tracker application to help improve your good habits and help you get rid of the bad ones.  To view a presentation of what this application is, click <a href="http://prezi.com/buryz40bekbm/?utm_campaign=share&utm_medium=copy&rc=ex0share">here</a>.</h2>
 
 <h2>Running Make It or Break It:</h2>
 Click this link to run the application in your browser.
+
+<h2>Presentation of what Make It or Break It </h2>
+
 
 <h2>Getting Started</h2>
 From the landing page, click to add a new user.  Please type in your username and password to become a new user.  On subsequent visits, you can just click on your name in the user's list to get started.  After clicking on your name (or creating a new user), you will be presented with lists of your habits that either need to be made or broken and a link to create those habits to populate this list.  You can tell Make It  or Break It from here if you have completed that habit for the day by clicking the checkbox.  Clicking on the name of the habit opens a new page to display more detailed information concerning each habit.
