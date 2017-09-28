@@ -60,9 +60,11 @@ $(document).ready(function () {
                 row += "<td colspan='3' >"+curStreak+"</td>";
                 row += "<td colspan='3' >"+longStreak+"</td>";
                 row += "<td colspan='3' >"+date+"</td>";
-                row += "<td colspan='3' >"+doneValue+"</td></tr>";
-                table.append(row);
+                row += "<td colspan='3' >"+doneValue+"</td>";
             }
+            row += "</tr>";  //close outside of if in case there is no progress data
+            table.append(row);
+            
             
         }
     }   
@@ -73,6 +75,7 @@ $(document).ready(function () {
         var bMake = this.value;
         var iMake = 3;
 
+        //console.log("in handleHabitFormSubmit");
         //get whether it is a good or bad habbit
         if (bMake === 'good') {
             habitInput = $("#entergoodHabit").val();
