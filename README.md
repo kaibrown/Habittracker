@@ -2,10 +2,10 @@
 
 <h2>This is a habit tracker application to help improve your good habits and help you get rid of the bad ones.  To view a presentation of what this application is, click <a href="http://prezi.com/buryz40bekbm/?utm_campaign=share&utm_medium=copy&rc=ex0share">here</a>.</h2>
 
-<h2>Running Make It or Break It:</h2>
-Click this link to run the application in your browser.
 
-<h2>Presentation of what Make It or Break It </h2>
+<h2>Running Make It or Break It:</h2>
+Click this <a href="https://salty-wave-52591.herokuapp.com/">link</a> to run the application in your browser.
+
 
 
 <h2>Getting Started</h2>
@@ -22,4 +22,12 @@ This <a href="https://youtu.be/oyIvrkPEHnY">demo video</a> shows how you would g
     <li>Adding a reminder/notification system to increase the chance of creating a habit</li>
     <li>More details concerning 21-days of focusing to create a new habit.</li>
     <li>What enhancement(s) would you like?</li>
+</ul>
+
+<h2>Contributers to this project are:</h2>
+<ul>
+ <li>Terri Pannell</li>
+ <li>Kaisey Brown</li>
+ <li>Brian Harding</li>
+ <li>Ryan Bregier</li>
 </ul>
