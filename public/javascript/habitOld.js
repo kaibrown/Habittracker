@@ -26,10 +26,13 @@ $(document).ready(function () {
     function addData(userHabits, streaks){
         //console.log(userHabits);
         //console.log(userHabits[0].Progresses);
-
+        var table = $("#tableData");
+        table.text = "";
+        var row = "";
         for(var i=0;i<userHabits.length;i++){
             var name = userHabits[i].name;
-            $("#habitsList").append("<tr><td>"+name+"</td></tr>");
+            //$("#habitsList").append("<tr><td>"+name+"</td>");
+            row = "<tr><td colspan='3' >"+name+"</td>";
             //If new habit with no progress, only add name
             //console.log(userHabits[i].Progresses);
             if(userHabits[i].Progresses.length !== 0 ){
@@ -46,15 +49,21 @@ $(document).ready(function () {
                 if(curStreak >= 21){
                     doneValue = "✔";
                 } else {
-                    doneValue = "x";
+                    doneValue = " ";
                 }
                 //console.log("done value= "+ doneValue);
 
-                $("#currentStreak").append("<tr><td>"+curStreak+"</td></tr>");
-                $("#longestStreak").append("<tr><td>"+longStreak+"</td></tr>");
-                $("#lastUpdated").append("<tr><td>"+date+"</td></tr>");
-                $("#completedHabit").append("<tr><td>"+doneValue+"</td></tr>");
+                //$("#currentStreak").append("<td>"+curStreak+"</td>");
+                //$("#longestStreak").append("<td>"+longStreak+"</td>");
+                //$("#lastUpdated").append("<td>"+date+"</td>");
+                //$("#completedHabit").append("<td>"+doneValue+"</td></tr>");
+                row += "<td colspan='3' >"+curStreak+"</td>";
+                row += "<td colspan='3' >"+longStreak+"</td>";
+                row += "<td colspan='3' >"+date+"</td>";
+                row += "<td colspan='3' >"+doneValue+"</td></tr>";
+                table.append(row);
             }
+            
         }
     }   
 
