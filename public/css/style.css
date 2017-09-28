@@ -29,7 +29,7 @@ body{
 }
 
 #break{
-    transform: rotate(25deg);
+    transform: rotate(15deg);
     float: right;
     text-decoration: line-through;
     color: red;
