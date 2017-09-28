@@ -32,7 +32,12 @@ $(document).ready(function () {
         for(var i=0;i<userHabits.length;i++){
             var name = userHabits[i].name;
             //$("#habitsList").append("<tr><td>"+name+"</td>");
-            row = "<tr><td colspan='3' >"+name+"</td>";
+            if(userHabits[i].make === false){
+                row = "<tr><td colspan='3' class='break2'>"+name+"</td>";                   
+            }else{
+                row = "<tr><td colspan='3' >"+name+"</td>";   
+            }
+            
             //If new habit with no progress, only add name
             //console.log(userHabits[i].Progresses);
             if(userHabits[i].Progresses.length !== 0 ){
