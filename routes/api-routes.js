@@ -116,7 +116,7 @@ module.exports = function (app) {
                 order: [['date', 'DESC']]
                 
         }).then(function (result) {
-            console.log("HABIT_CUR_STREAK JSON=",result);
+            //console.log("HABIT_CUR_STREAK JSON=",result);
             res.json(result);
 
         });
@@ -134,13 +134,26 @@ module.exports = function (app) {
             order: [['date', 'DESC']]
 
         }).then(function (days) {
-
-            var consec = 0;
-            if (days === null) {
-                consec = days[0].consec_days + 1;
-            }
-            else {
-                consec = 1;
+            //console.log(days[0]);
+            //console.log("conec date, days", days[0].date, days[0].consec_days);
+            //console.log("TERRI");
+            //console.log(days.length);
+            var consec = 1; //default value
+            if (days.length > 0){
+                //if date was yesterday
+                var today = new Date();
+                //console.log("TODAY ",today);
+                today.setDate(today.getDate() - 1);
+                //console.log("YESTERDAY ", today);
+                //console.log(days[0].date.getYear() + ", " + today.getYear());
+                //console.log();
+                //console.log();
+                if(days[0].date.getYear() === today.getYear() && days[0].date.getMonth() === today.getMonth() &&
+                    days[0].date.getDate() === today.getDate())
+                {
+                    consec = days[0].consec_days + 1; 
+                }
+                
             }
 
 

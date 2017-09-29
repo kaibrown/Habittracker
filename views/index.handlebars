@@ -12,7 +12,7 @@
             </tr>
             {{#each habits}} {{#if this.make}}
             <tr>
-                <td class="tdforh"><a id = {{this.name}} href="#">{{this.name}}</a></td>
+                <td class="tdforh"><a id = '{{this.name}}' data-toggle="modal" data-target="#showHabitDetail" href="#habitDetail" data-userhabitids="{{this.id}}_{{this.UserId}}">{{this.name}}</td></a>
                 {{#if this.progress}}
                 <td class="tdforh"><label><input disabled checked="checked" class="chkbx" type="checkbox" value="done" id="{{this.id}}">Done</label></td>
                 {{/if}} {{#unless this.progress}}
@@ -34,7 +34,7 @@
                 </tr>
                 {{#each habits}} {{#unless this.make}}
                 <tr>
-                    <td class="tdforh"><a id= {{this.name}} href="#">{{this.name}}</td></a></td>
+                    <td class="tdforh"><a id=' {{this.name}}' data-toggle="modal" data-target="#showHabitDetail" href="#habitDetail" data-userhabitids="{{this.id}}_{{this.UserId}}">{{this.name}}</td></a>
                     {{#if this.progress}}
                     <td class="tdforh"><label><input disabled checked="checked" type="checkbox" value="done" id={{this.id}} action="/api/updatehabit/:id" method="POST">Done</label></td>
                     {{/if}} {{#unless this.progress}}
@@ -51,7 +51,7 @@
 
 
 <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
         $(document).on("click", ".updateMCheck", updateHabit);
         $(document).on("click", ".updateBCheck", updateHabit);
 
@@ -66,8 +66,128 @@
                 location.reload();
             });  
         };
-      
+        $('#showHabitDetail').on('show.bs.modal', function(e) {
+            var userhabitids = e.relatedTarget.dataset.userhabitids;
+            var ids = [];   //[0] is the habit id, [1] is the user id
+            //Clear fields on modal before starting
+            $("#detailName").text(" ");
+            $("#detailNumEntries").text(" ");
+            $("#detailCurStreak").text(" ");
+            $("#detailLongStreak").text(" "); 
+            $("#detailRestarts").text(" ");             
+            // Pull user id and habit id from data passed in
+            console.log(userhabitids);
+            id =userhabitids.split('_');
+            console.log(id);
+
+            //query to get data for this user
+            var streaks = [];
+            var habits;
+            console.log(id[0]);
+            $.get("/habitCurStreak/"+id[1], function (userHabits) {
+                console.log(userHabits);
+                //console.log(userHabits.length);
+                addData(userHabits, id[0]);
+            });            
+        });
+
+        //Add data to modal
+        function addData(userHabits, id){
+            var index = -1;
+            var startDate, today;
+            var numRestarts = 0;
+            var indexOfLongestStreak;
+            var curStreak = 1;
+            var longStreak=0;
+            var createdDate;
+            var data = [];
+            var labels = [];
+            var datasetValue = [];
+            var label = [];
+            var bShowChart = false;
+            
+            //console.log(userHabits);
+            //console.log(id);
+            for(var i=0;i<userHabits.length;i++){
+                if(userHabits[i].id == id){
+                    console.log(userHabits[i]);
+                    index = i;
+                    console.log("Created At: " ,userHabits[i].createdAt);
+                    //moment("2010-10-20 4:30",       "YYYY-MM-DD HH:mm");
+                    dateCreated = moment(userHabits[i].createdAt);
+                    if(userHabits[i].Progresses.length !== 0){
+                        bShowChart = true;
+                        var progress = userHabits[i].Progresses;
+                        console.log(progress);
+                        //Now pull out progress data to show
+                        for(var j=0;j<progress.length;j++){
+                            console.log("ProgressJ= ", progress[j]);
+                            var utc = moment.utc(progress[j].date, 'YYYY-MM-DD HH:mm:ss');
+                            var local = utc.local();
+                            console.log("local", local);
+                            console.log("ProgressJ id= ", progress[j].id);
+                            var pDate = moment(local);
+                            console.log("j, Progress Date: ", j,pDate);
+                            if(progress[j].consec_days > longStreak){
+                                longStreak = progress[j].consec_days;
+                            }
+                            if(progress[j].consec_days === 1){
+                                numRestarts++;
+                            }
+                            data[j] = {x:pDate.diff(dateCreated, 'days'), y:progress[j].consec_days};
+                            
+                            console.log("progress date ", pDate);    
+                            console.log("created date ", dateCreated);
+                            console.log(pDate.diff(dateCreated, 'days'));                    
+                        }
+                    }
+                }
+            }
+            if(index > -1){
+                for(var i=0;i<longStreak;i++){
+                    labels[i] = i;
+                }
+                //console.log(userHabits[index].name);
+                $("#detailName").text("Name: " + userHabits[index].name);
+                if(progress.length > 1){
+                    $("#detailNumEntries").text(progress.length+" entries");
+                } else {
+                    $("#detailNumEntries").text(progress.length+" entry");
+                }
+                $("#detailCreate").text("Creation Date: " + dateCreated);
+                $("#detailCurStreak").text("Current Streak: " + progress[progress.length-1].consec_days);
+                $("#detailLongStreak").text("Longest Streak: " + longStreak); 
+                $("#detailRestarts").text("Number of starts: " + numRestarts);
+
+                //Now create chart
+                var ctx = $("#myChart").get(0).getContext("2d");
+                
+                console.log(labels);
+                console.log(data);
+
+                var mydata = {
+                    label : labels,
+                    datasets : [{
+                        data: data,
+                        label: "Days",
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }]
+                }
+                var myChart = new Chart(ctx, {
+                    responsive: true,
+                    pointDotRadius: 10,
+                    type: 'line',
+                    data: mydata
+                    //options: options
+                });              
+            }
+
+        }
+
     });
+
+
 
 </script>
 
