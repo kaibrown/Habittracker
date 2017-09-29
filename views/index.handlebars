@@ -115,8 +115,10 @@
                     console.log("Created At: " ,userHabits[i].createdAt);
                     //moment("2010-10-20 4:30",       "YYYY-MM-DD HH:mm");
                     dateCreated = moment(userHabits[i].createdAt);
-                    if(userHabits[i].Progresses.length !== 0){
+                    if(userHabits[i].Progresses.length > 1){
                         bShowChart = true;
+                    }
+                    if(userHabits[i].Progresses.length !== 0){
                         var progress = userHabits[i].Progresses;
                         console.log(progress);
                         //Now pull out progress data to show
@@ -165,22 +167,24 @@
                 console.log(labels);
                 console.log(data);
 
-                var mydata = {
-                    label : labels,
-                    datasets : [{
-                        data: data,
-                        label: "Days",
-                        borderColor: "#3e95cd",
-                        fill: false
-                    }]
-                }
-                var myChart = new Chart(ctx, {
-                    responsive: true,
-                    pointDotRadius: 10,
-                    type: 'line',
-                    data: mydata
-                    //options: options
-                });              
+                if(bShowChart){ //only show chart if have at least 2 entries
+                    var mydata = {
+                        label : labels,
+                        datasets : [{
+                            data: data,
+                            label: "Days",
+                            borderColor: "#3e95cd",
+                            fill: false
+                        }]
+                    }
+                    var myChart = new Chart(ctx, {
+                        responsive: true,
+                        pointDotRadius: 10,
+                        type: 'line',
+                        data: mydata
+                        //options: options
+                    });   
+                }           
             }
 
         }
